@@ -1,6 +1,8 @@
 import './style.css'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+const root = document.querySelector<HTMLDivElement>('#app');
+
+root!.innerHTML = `
   <div>
     <h1>kur</h1>
   </div>
