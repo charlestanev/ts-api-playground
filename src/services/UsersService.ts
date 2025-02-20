@@ -1,17 +1,11 @@
-import { fetchUtil } from "../utils/http";
+import { User } from "../types/user";
+import HttpService from "./HttpService";
 
-export default class UserService<T> {
-    protected apiUrl: string;
-    data = {} as T;
-    dataCollection = [] as T[];
-
-    constructor(apiUrl: string) {
-        this.apiUrl = apiUrl;
+export default class UserService extends HttpService<User> {
+    constructor(baseUrl: string) {
+        super(`${baseUrl}/users`);
     }
 
-    usersGetAll() {
-        fetchUtil<T[]>(this.apiUrl)
-    }
-
+    userGetAll() { }
     getSingleUser() { }
 };

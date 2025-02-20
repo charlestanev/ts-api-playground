@@ -1,17 +1,10 @@
-import { fetchUtil } from "../utils/http";
+import { Post } from "../types/post";
+import HttpService from "./HttpService";
 
-export default class PostService<T> {
-    protected apiUrl: string;
-    data = {} as T;
-    dataCollection = [] as T[];
-
-    constructor(apiUrl: string) {
-        this.apiUrl = apiUrl;
+export default class PostService extends HttpService<Post> {
+    constructor(baseUrl: string) {
+        super(`${baseUrl}/posts`);
     }
 
-    postsGetAll() {
-        fetchUtil<T[]>(this.apiUrl)
-    }
-
-    getSingleUser() { }
+    getUaerPost() { }
 };
