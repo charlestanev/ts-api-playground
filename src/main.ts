@@ -1,4 +1,5 @@
 import { CONFIG } from './constants';
+import HttpService from './services/HttpService';
 import PostService from './services/PostsService';
 import UserService from './services/UsersService';
 import './style.css'
@@ -15,6 +16,8 @@ const userService = new UserService(CONFIG.baseUrl);
 
 root!.innerHTML = `
   <div>
+    <h1>${HttpService.}</h1>
+    <hr>
     <h1>${userService.userGetAll()}</h1>
     <hr>
     <h1>${postService.getUsersPost()}</h1>
