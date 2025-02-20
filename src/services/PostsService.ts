@@ -1,11 +1,17 @@
-export default class PostService {
-    private baseUrl: string;
+import { fetchUtil } from "../utils/http";
 
-    constructor(baseUrl: string) {
-        this.baseUrl = baseUrl;
+export default class PostService<T> {
+    protected apiUrl: string;
+    data = {} as T;
+    dataCollection = [] as T[];
+
+    constructor(apiUrl: string) {
+        this.apiUrl = apiUrl;
     }
 
-    getUsersPost() {
-        return this.baseUrl
+    postsGetAll() {
+        fetchUtil<T[]>(this.apiUrl)
     }
+
+    getSingleUser() { }
 };

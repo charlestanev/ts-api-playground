@@ -1,12 +1,16 @@
-export default class UserService {
-    private baseUrl: string;
+import { fetchUtil } from "../utils/http";
 
-    constructor(baseUrl: string) {
-        this.baseUrl = baseUrl;
+export default class UserService<T> {
+    protected apiUrl: string;
+    data = {} as T;
+    dataCollection = [] as T[];
+
+    constructor(apiUrl: string) {
+        this.apiUrl = apiUrl;
     }
 
-    userGetAll() {
-        return this.baseUrl;
+    usersGetAll() {
+        fetchUtil<T[]>(this.apiUrl)
     }
 
     getSingleUser() { }
