@@ -9,7 +9,7 @@ const root = document.querySelector<HTMLDivElement>('#app');
 
 const user: UserDetails = {
   id: 11,
-  name: "Michael Hart",
+  name: "Cahrles Hart",
   username: "MikeH",
   email: "michael.hart@example.com",
   address: {
@@ -31,7 +31,7 @@ const user: UserDetails = {
   }
 };
 
-const userId = 7;
+const userId = 1;
 
 const postService = new PostService(`${CONFIG.baseUrl}`);
 postService.getAll().then((data) => {
@@ -44,11 +44,19 @@ userService.getAll().then((data) => {
 });
 
 userService.create(user).then((data) => {
-  console.log('User created : ', data);
+  console.log('User Created : ', data);
 });
 
 userService.getSingleUser(userId).then((data) => {
-  console.log('users : ', data);
+  console.log('Get Single User :', data);
+});
+
+userService.update(userId, user).then((data) => {
+  console.log('User Updated : ', data);
+});
+
+userService.detele(userId).then((data) => {
+  console.log('User Deleted : ', data);
 });
 
 

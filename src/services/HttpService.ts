@@ -28,11 +28,21 @@ export default class HttpService<T> {
         return fetchUtil<T>(`${this.apiUrl}/${id}`) as Promise<T>;
     }
 
-    update() {
-        //
+    update(id: number, body: T) {
+        const config = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+        }
+        return fetchUtil<T>(`${this.apiUrl}/${id}`, config) as Promise<T>;
     }
 
-    detele() {
-        //
+    detele(id: number) {
+        const config = {
+            method: "DELETE",
+        }
+        return fetchUtil<T>(`${this.apiUrl}/${id}`, config) as Promise<T>;
     }
 }
