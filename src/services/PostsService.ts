@@ -6,5 +6,5 @@ export default class PostService extends HttpService<Post> {
         super(`${baseUrl}/posts`);
     }
 
-    getUaerPost() { }
+    getUserPost() { }
 };

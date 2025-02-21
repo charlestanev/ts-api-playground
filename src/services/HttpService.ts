@@ -13,8 +13,8 @@ export default class HttpService<T> {
         //
     }
 
-    getAll() {
-        return fetchUtil<T[]>(this.apiUrl)
+    getAll(): Promise<T[]> {
+        return fetchUtil<T[]>(this.apiUrl) as Promise<T[]>;
     }
 
     getOne() {
