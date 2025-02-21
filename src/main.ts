@@ -31,7 +31,7 @@ const user: UserDetails = {
   }
 };
 
-const userId = 1;
+const userId = 10;
 
 const postService = new PostService(`${CONFIG.baseUrl}`);
 postService.getAll().then((data) => {
@@ -43,20 +43,27 @@ userService.getAll().then((data) => {
   console.log('users : ', data);
 });
 
-userService.create(user).then((data) => {
-  console.log('User Created : ', data);
-});
+// userService.create(user).then((data) => {
+//   console.log('User Created : ', data);
+// });
 
-userService.getSingleUser(userId).then((data) => {
-  console.log('Get Single User :', data);
-});
+// userService.getOne(userId).then((data) => {
+//   console.log('Get Single User :', data);
+// });
 
-userService.update(userId, user).then((data) => {
-  console.log('User Updated : ', data);
-});
+// userService.update(userId, user).then((data) => {
+//   console.log('User Updated : ', data);
+// });
 
-userService.detele(userId).then((data) => {
-  console.log('User Deleted : ', data);
+// userService.detele(userId).then((data) => {
+//   console.log('User Deleted : ', data);
+// });
+
+userService.getSingleUser(userId, (id: number) => {
+  postService.getUserPosts(id).then((data) => {
+    console.log('User Post : ', data);
+  }
+  );
 });
 
 

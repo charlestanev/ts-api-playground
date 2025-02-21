@@ -24,7 +24,7 @@ export default class HttpService<T> {
         return fetchUtil<T[]>(this.apiUrl) as Promise<T[]>;
     }
 
-    getSingleUser(id: number): Promise<T> {
+    getOne(id: number): Promise<T> {
         return fetchUtil<T>(`${this.apiUrl}/${id}`) as Promise<T>;
     }
 

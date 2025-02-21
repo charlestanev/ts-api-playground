@@ -6,6 +6,10 @@ export default class UserService extends HttpService<UserDetails> {
         super(`${baseUrl}/users`);
     }
 
-    userGetAll() { }
-
+    getSingleUser(id: number, cb: Function) {
+        return this.getOne(id).then((data) => {
+            console.log('Get single users data id');
+            cb(data.id);
+        });
+    }
 };

@@ -1,4 +1,5 @@
 import { Post } from "../types/post";
+import { fetchUtil } from "../utils/http";
 import HttpService from "./HttpService";
 
 export default class PostService extends HttpService<Post> {
@@ -6,5 +7,7 @@ export default class PostService extends HttpService<Post> {
         super(`${baseUrl}/posts`);
     }
 
-    getUserPost() { }
+    getUserPosts(userId: number) {
+        return fetchUtil<Post[]>(`${this.apiUrl}?userId=${userId}`) as Promise<Post[]>;
+    }
 };
