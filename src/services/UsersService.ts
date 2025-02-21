@@ -6,7 +6,6 @@ export default class UserService extends HttpService<UserDetails> {
         super(`${baseUrl}/users`);
     }
 
-    getSingleUser() { }
     userGetAll() { }
 
 };

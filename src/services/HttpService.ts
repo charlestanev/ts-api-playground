@@ -24,8 +24,8 @@ export default class HttpService<T> {
         return fetchUtil<T[]>(this.apiUrl) as Promise<T[]>;
     }
 
-    getOne() {
-        //
+    getSingleUser(id: number): Promise<T> {
+        return fetchUtil<T>(`${this.apiUrl}/${id}`) as Promise<T>;
     }
 
     update() {
