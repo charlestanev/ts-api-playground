@@ -7,29 +7,11 @@ export abstract class HtmlUtil {
         }
 
         const { pathname } = window.location;
-        rootDiv.innerHTML = router[pathname];
-
-        HtmlUtil.addEventListeenr(rootDiv);
+        rootDiv.innerHTML = router[pathname] || '<h1>Page Not Found</h1>';
     }
 
-    private static addEventListeenr(rootDiv: HTMLElement) {
-        const usersBtn: HTMLElement | null = document.getElementById('users');
-        const postsBtn: HTMLElement | null = document.getElementById('posts');
-
-        if (usersBtn) {
-            usersBtn.addEventListener('click', () => {
-                HtmlUtil.navigate(rootDiv, '/');
-            });
-        }
-
-        if (postsBtn) {
-            postsBtn.addEventListener('click', () => {
-                HtmlUtil.navigate(rootDiv, '/posts');
-            });
-        }
+    static navigate(rootDiv: HTMLElement, pathname: string) {
+        window.history.pushState({}, pathname, window.location.origin + pathname);
+        HtmlUtil.render(rootDiv);
     }
-
-    private static navigate(rootDiv: HTMLElement, pathname: string) {
-        const { } = window.location;
-    }
-};
+}

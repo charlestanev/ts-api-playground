@@ -2,19 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ts Api Playground</title>
+    <link rel="stylesheet" href="/styles/style.css" />
   </head>
   <body>
     <div id="wrapper">
-      <nav id="main-nav" class="sidebar">
-        <a id="users">Users</a>
-        <a id="posts">Posts</a>
+      <nav id="main-nav">
+        <button id="users">Users</button>
+        <button id="posts">Posts</button>
       </nav>
 
-      <div id="root"></div>
+      <main id="root"></main>
     </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

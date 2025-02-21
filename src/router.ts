@@ -1,10 +1,8 @@
-import { RouterMap } from "./types/router";
-import { postPage } from "./views/post";
-import { userPage } from "./views/users";
+import { postPage } from './views/post';
+import { userPage } from './views/users';
 
-export const router: RouterMap = {
-    '/': userPage,
+export const router: Record<string, string> = {
+    '/': '<h1>Welcome to the App</h1>',
     '/users': userPage,
     '/posts': postPage,
-
-}
+};

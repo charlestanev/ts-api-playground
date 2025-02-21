@@ -1,79 +1,29 @@
 import { CONFIG } from './constants';
 import PostService from './services/PostsService';
 import UserService from './services/UsersService';
-import { UserDetails } from './types/user';
-
-import './style.css'
 import { HtmlUtil } from './utils/html';
+import { router } from './router';
 
-// Rendering the views
+import './style.css';
+
+// Selecting the root element
 const root = document.querySelector<HTMLDivElement>('#root');
-if (root) {
-  root!.innerHTML = `
-  <div>
-    <h1> Hello World </h1>
-  </div>
-`;
-}
+if (!root) throw new Error('Root element not found');
+
+// Render initial content
 HtmlUtil.render(root);
 
-// // Handling the data
-// const user: UserDetails = {
-//   id: 11,
-//   name: "Cahrles Hart",
-//   username: "MikeH",
-//   email: "michael.hart@example.com",
-//   address: {
-//     street: "Maple Avenue",
-//     suite: "Suite 305",
-//     city: "Greenwood",
-//     zipcode: "56789-1234",
-//     geo: {
-//       lat: 40,
-//       lng: 74.0060
-//     }
-//   },
-//   phone: "1-555-123-4567",
-//   website: "michaelhart.dev",
-//   company: {
-//     name: "Hart Solutions",
-//     catchPhrase: "Innovative software engineering",
-//     bs: "deliver cutting-edge web applications"
-//   }
-// };
+// Initialize Services
+const postService = new PostService(CONFIG.baseUrl);
+const userService = new UserService(CONFIG.baseUrl);
 
-// const userId = 10;
+// Event Listeners for Navigation
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("users")?.addEventListener("click", () => {
+    HtmlUtil.navigate(root, '/users');
+  });
 
-// const postService = new PostService(`${CONFIG.baseUrl}`);
-// postService.getAll().then((data) => {
-//   console.log('Posts : ', data);
-// });
-
-// const userService = new UserService(`${CONFIG.baseUrl}`);
-// userService.getAll().then((data) => {
-//   console.log('users : ', data);
-// });
-
-// userService.create(user).then((data) => {
-//   console.log('User Created : ', data);
-// });
-
-// userService.getOne(userId).then((data) => {
-//   console.log('Get Single User :', data);
-// });
-
-// userService.update(userId, user).then((data) => {
-//   console.log('User Updated : ', data);
-// });
-
-// userService.detele(userId).then((data) => {
-//   console.log('User Deleted : ', data);
-// });
-
-// userService.getSingleUser(userId, (id: number) => {
-//   postService.getUserPosts(id).then((data) => {
-//     console.log('User Post : ', data);
-//   });
-// });
-
-
+  document.getElementById("posts")?.addEventListener("click", () => {
+    HtmlUtil.navigate(root, '/posts');
+  });
+});
