@@ -9,8 +9,15 @@ export default class HttpService<T> {
         this.apiUrl = apiUrl;
     }
 
-    create() {
-        //
+    create(body: T) {
+        const config = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+        }
+        return fetchUtil<T>(this.apiUrl, config) as Promise<T>;
     }
 
     getAll(): Promise<T[]> {
