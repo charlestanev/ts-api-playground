@@ -9,7 +9,23 @@ export default class HttpService<T> {
         this.apiUrl = apiUrl;
     }
 
+    create() {
+        //
+    }
+
     getAll() {
-        fetchUtil<T[]>(this.apiUrl)
+        return fetchUtil<T[]>(this.apiUrl)
+    }
+
+    getOne() {
+        //
+    }
+
+    update() {
+        //
+    }
+
+    detele() {
+        //
     }
 }
